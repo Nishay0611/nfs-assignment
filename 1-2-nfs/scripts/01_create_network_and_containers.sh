@@ -13,7 +13,7 @@ docker run -d \
   --privileged \
   --restart unless-stopped \
   --network nfs-network \
-  -v ~/nfs_share:/srv/nfs/share \
+  -v nfs-data:/srv/nfs/share \
    rockylinux:8 \
   /usr/sbin/init
 
