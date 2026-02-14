@@ -11,17 +11,16 @@ docker exec Alcor id star 2>/dev/null || docker exec Alcor useradd -m -g trek st
 
 # 3) Verifying user
 echo "Verifying user"
-docker exec Alcor id star
+docker exec Alcor id star 
 
-‪# 4) verifying mount exists before creating files
+# 4) Verifying mount exists before creating files
 docker exec Alcor mount | grep -q "/mnt/section2" || {
   echo "Error: /mnt/section2 is not mounted"
-  exit 1 
+  exit 1
 }
 
 # 5) Creating 1000 files as user 'star' in /mnt/section2
 docker exec Alcor bash -c "su - star -c 'for i in \$(seq 1 1000); do dd if=/dev/zero of=/mnt/section2/file_\$i bs=2048 count=1 status=none; done'"
-
 
 # 6) Verifying file count on Alcor
 echo "File count on Alcor"
