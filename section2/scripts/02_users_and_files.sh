@@ -15,8 +15,8 @@ docker exec Alcor id star
 
 ‪#‬ 4) verifying mount exists before creating files
 docker exec Alcor mount | grep -q "/mnt/section2" || {
-  echo "ERROR: /mnt/section2 is not mounted"
-  exit 1
+  echo "Error: /mnt/section2 is not mounted"
+  exit 1 
 }
 
 # 5) Creating 1000 files as user 'star' in /mnt/section2
