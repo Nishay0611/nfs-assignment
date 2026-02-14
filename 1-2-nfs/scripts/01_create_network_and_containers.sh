@@ -11,16 +11,18 @@ docker rm -f Mizar Alcor 2>/dev/null || true
 docker run -d \
   --name Mizar \
   --privileged \
+  --restart unless-stopped \
   --network nfs-network \
-  centos:7 \
+   rockylinux:8 \
   /usr/sbin/init
 
 # Start NFS client container (Alcor)
 docker run -d \
   --name Alcor \
   --privileged \
+  --restart unless-stopped \
   --network nfs-network \
-  centos:7 \
+   rockylinux:8 \
   /usr/sbin/init
 
 # Show running containers
