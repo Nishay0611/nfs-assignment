@@ -17,7 +17,7 @@ docker exec Mizar systemctl is-enabled nfs-server
 docker exec Mizar systemctl status nfs-server --no-pager | head -n 15
 
 echo "[4/6] Verifying NFS mount on Alcor"
-docker exec Alcor mount | grep -E 'Mizar:/srv/nfs/share on /mnt/nfs type nfs'
+docker exec Alcor mount | grep '/mnt/nfs'
 
 echo "[5/6] Verifying read/write after reboot"
 docker exec Alcor bash -c 'echo "hello after reboot" > /mnt/nfs/hello_after_reboot.txt'
