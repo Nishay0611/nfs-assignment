@@ -5,7 +5,9 @@ echo "Installing NFS client on Alcor"
 
 docker exec Alcor dnf install -y nfs-utils
 docker exec Alcor mkdir -p /mnt/nfs
-docker exec Alcor mount -t nfs Mizar:/srv/nfs/share /mnt/nfs
+docker exec Alcor bash -c 'echo "Mizar:/srv/nfs/share /mnt/nfs nfs defaults 0 0" >> /etc/fstab'
+# Mount immediately
+docker exec Alcor mount -a 
 
 echo "Writing test file from Alcor"
 
