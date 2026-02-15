@@ -1,18 +1,21 @@
 import time
 import requests
 import os
+import json
 from prometheus_client import start_http_server
 from metrics import (api_polls_total, poll_duration, errors_total, temperature_c, wind_speed_ms, humidity_percent)
 
-TARGETS = [
+default_targets = [
     {"name": "TelAviv", "lat": 32.109333, "lon": 34.855499},
     {"name": "London", "lat": 51.509865, "lon": -0.118092},
     {"name": "NewYork", "lat": 43.000000, "lon": -75.000000},
     {"name": "Bangkok", "lat": 13.736717, "lon": 100.523186}
 ]
+targets_environment = os.getenv("TARGETS", "")
 
 POLL_INTERVAL_SECONDS = int(os.getenv("POLL_INTERVAL_SECONDS", "30"))
 PORT = int(os.getenv("PORT", "8000"))
+TARGETS = json.loads(targets_environment) if targets_environment else default_targets
 
 def build_url(lat, lon):
     return (
