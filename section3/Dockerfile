@@ -14,8 +14,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy in the source code
 COPY . .
 
-# Expose port (default 8000)
-EXPOSE 8080
+# Expose port
+EXPOSE 8000
 
 # Run the exporter
 CMD ["python", "weather_exporter.py"]
