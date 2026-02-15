@@ -6,9 +6,9 @@ from prometheus_client import start_http_server
 from metrics import (api_polls_total, poll_duration, errors_total, temperature_c, wind_speed_ms, humidity_percent)
 
 default_targets = [
-    {"name": "TelAviv", "lat": 32.109333, "lon": 34.855499},
+    {"name": "Tel Aviv", "lat": 32.109333, "lon": 34.855499},
     {"name": "London", "lat": 51.509865, "lon": -0.118092},
-    {"name": "NewYork", "lat": 43.000000, "lon": -75.000000},
+    {"name": "New York", "lat": 43.000000, "lon": -75.000000},
     {"name": "Bangkok", "lat": 13.736717, "lon": 100.523186}
 ]
 targets_environment = os.getenv("TARGETS", "")
