@@ -21,5 +21,20 @@ errors_total = Counter(
     ["target", "reason"]
 )
 
-emperature_c = Gauge("weather_temperature_c", "Current temperature (C)", ["target"])
-wind_speed_ms = Gauge("weather_wind_speed_ms", "Current wind speed (m/s)", ["target"])
+temperature_c = Gauge(
+    "weather_temperature_c",
+    "Current temperature (C)",
+    ["target"]
+)
+
+wind_speed_ms = Gauge(
+    "weather_wind_speed_ms",
+    "Current wind speed (m/s)",
+    ["target"]
+)
+
+humidity_percent = Gauge(
+    "weather_relative_humidity_percent",
+    "Current relative humidity (%)",
+    ["target"]
+)
