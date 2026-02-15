@@ -1,5 +1,8 @@
 import time
 import requests
+import os
+from prometheus_client import start_http_server
+from metrics import (api_polls_total, poll_duration, errors_total, emperature_c, wind_speed_ms)
 
 TARGETS = [
     {"name": "TelAviv", "lat": 32.109333, "lon": 34.855499},
@@ -8,7 +11,8 @@ TARGETS = [
     {"name": "Bangkok", "lat": 13.736717, "lon": 100.523186}
 ]
 
-POLL_INTERVAL_SECONDS = 30
+POLL_INTERVAL_SECONDS = int(os.getenv("POLL_INTERVAL_SECONDS", "30"))
+PORT = int(os.getenv("PORT", "8000"))
 
 def build_url(lat, lon):
     return (
@@ -34,6 +38,7 @@ def poll_target(target):
     print(f"{target['name']} | Temp: {temperature}°C | Wind: {wind_speed} m/s")
 
 def main():
+    start_http_server(PORT)
     while True:
         for target in TARGETS:
             poll_target(target)
