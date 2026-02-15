@@ -34,7 +34,7 @@ wind_speed_ms = Gauge(
 )
 
 humidity_percent = Gauge(
-    "weather_relative_umidity_percent",
+    "weather_relative_humidity_percent",
     "Current relative humidity (%)",
     ["target"]
 )
