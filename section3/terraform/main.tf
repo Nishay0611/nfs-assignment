@@ -36,7 +36,6 @@ resource "docker_container" "weather_exporter" {
   }
 
 # Environment variables
-
   env = [
     "PORT=${var.port}",
     "POLL_INTERVAL_SECONDS=${var.poll_interval_seconds}",

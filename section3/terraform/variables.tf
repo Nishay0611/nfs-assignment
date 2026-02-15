@@ -29,5 +29,5 @@ variable "targets" {
   { name = "Tel Aviv", lat = 32.109333, lon = 34.855499 },
   { name = "London",   lat = 51.509865, lon = -0.118092 },
   { name = "New York", lat = 40.7128,   lon = -74.0060 },
-  { name = "Bangkok",  lat = 13.736717, lon = 100.523186 }
+  { name = "Bangkok",  lat = 13.736717, lon = 100.523186 },
 }

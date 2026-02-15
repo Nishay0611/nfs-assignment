@@ -7,7 +7,7 @@ api_polls_total = Counter(
     ["target", "status"]
 )
 
-# Histogram – duration per poll
+# Histogram = duration per poll
 poll_duration = Histogram(
     "poll_duration_seconds",
     "Weather API poll duration in seconds",

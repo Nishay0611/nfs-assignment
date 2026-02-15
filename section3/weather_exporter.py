@@ -1,7 +1,4 @@
-import time
-import requests
-import os
-import json
+import time, requests, os, json
 from prometheus_client import start_http_server
 from metrics import (api_polls_total, poll_duration, errors_total, temperature_c, wind_speed_ms, humidity_percent)
 
@@ -11,7 +8,7 @@ default_targets = [
     {"name": "New York", "lat": 43.000000, "lon": -75.000000},
     {"name": "Bangkok", "lat": 13.736717, "lon": 100.523186}
 ]
-targets_environment = os.getenv("TARGETS", "")
+targets_environment = os.getenv("TARGETS")
 
 POLL_INTERVAL_SECONDS = int(os.getenv("POLL_INTERVAL_SECONDS", "30"))
 PORT = int(os.getenv("PORT", "8000"))
@@ -74,12 +71,9 @@ def poll_target(target):
 # Metrics exposed on http://localhost:{PORT}/metrics
 def main():
     start_http_server(PORT)
-
     while True:
         for target in TARGETS:
             poll_target(target)
-
-        print("Sleeping...\n")
         time.sleep(POLL_INTERVAL_SECONDS)
 
 if __name__ == "__main__":
